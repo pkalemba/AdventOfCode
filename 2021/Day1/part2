@@ -1,0 +1,12 @@
+#!/bin/env -S awk -f
+BEGIN { 
+        lines=0
+        prev=0
+    }
+    { 
+        a[NR]=$1;
+        sum=a[NR]+a[NR-1]+a[NR-2]
+        if  (sum > prev && a[NR-2] >0 ) lines=lines+1
+        prev = sum
+    }
+END   { print lines-1  }

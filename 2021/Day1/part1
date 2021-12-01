@@ -1,0 +1,10 @@
+#!/bin/env -S awk -f
+BEGIN { 
+        lines=0
+        prev=0
+    }
+    { 
+        if  ($1 > prev) lines=lines+1
+        prev = $1
+    }
+END   { print lines-1  }
